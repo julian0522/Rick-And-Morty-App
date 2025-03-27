@@ -1,0 +1,31 @@
+
+<div class="card card-side bg-base-100 shadow-sm">
+  <figure class="w-60">
+    <img [src]="character().image" [alt]="character().name" />
+  </figure>
+  <div class="card-body">
+    <a [routerLink]="['/rick-and-morty', 'character', character().id]"  class="card-title text-2xl cursos-pointer">{{ character().name }}</a>
+
+    <div>
+      <span
+      [ngClass]="{
+        'bg-red-500 text-white': character().status.toLowerCase() === 'dead',
+        'bg-green-400 text-white':
+          character().status.toLowerCase() === 'alive',
+        'bg-blue-400': character().status.toLowerCase() === 'unknown'
+      }"
+      class="px-2 m-0 rounded-4xl w-20 text-center font-bold mr-1"
+    >
+      {{ character().status }}
+    </span>
+    <span class="font-bold ml-1"> - {{ character().species }}</span>
+    </div>
+
+    <span class="text-gray-400 font-bold mt-3">Ultima Ubicacion Conocida:</span>
+    <span class="text-xl">{{ character().location.name }}</span>
+
+    <span class="text-gray-400 font-bold mt-3">Primera vez Visto en:</span>
+    <a class="text-xl">{{ character().origin.name }}</a>
+
+
+  </div>

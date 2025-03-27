@@ -1,0 +1,30 @@
+<section class="py-10 px-12">
+  <!-- Card Grid -->
+  <div
+    class="grid grid-flow-row gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 mb-7"
+  >
+    @for (character of characters(); track character.id) {
+
+      <app-character-card [character]="character"></app-character-card>
+    }
+
+    <!-- ERROR MESSAGE-->
+    @if (errorMessage()) {
+    <tr>
+      <td colspan="8" class="text-center">
+        {{ errorMessage() }}
+      </td>
+    </tr>
+    }
+
+    <!-- LOADING-->
+    @if (isLoading()) {
+    <div
+      role="status"
+      class="absolute -translate-x-1/2 -translate-y-1/2 top-2/4 left-4/7 "
+    >
+      <shared-spinner-carga />
+    </div>
+    }
+  </div>
+</section>

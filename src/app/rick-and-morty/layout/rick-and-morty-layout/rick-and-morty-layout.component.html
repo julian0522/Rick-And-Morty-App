@@ -1,0 +1,29 @@
+<!-- Menu -->
+<section class="w-64 fixed left-0 top-0 max-h-screen h-screen">
+  <shared-menu></shared-menu>
+</section>
+
+<!--- Resto del contenido-->
+<section
+  class="ml-64 min-h-screen m-0"
+  style="
+    background-image: url(https://img.freepik.com/foto-gratis/fondo-espacial-cosmos-noche-estrellada-realista-estrellas-brillantes-via-lactea-galaxia-color-polvo-estrellas_1258-154685.jpg?t=st=1742693328~exp=1742696928~hmac=0d434378747152ca5279fdbcad6bc2c35759ea3901441302b37ac9a952d53468&w=1060);
+    background-size: cover; /* Hace que la imagen cubra todo el fondo */
+    background-position: center; /* Centra la imagen */
+    background-attachment: fixed; /* Permite que la imagen se mantenga al hacer scroll */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-color: rgba(0, 0, 0, 0.5); /* Color negro con opacidad */
+    background-blend-mode: darken; /* Mezcla el color con la imagen */
+  "
+>
+  <div class="flex justify-center">
+    <img
+      class="w-80"
+      src="Rick_And_Morty_Png_File_-_Rick_E_Morty_Logo_Png__Transparent_Png_-_vhv-removebg-preview.png"
+      alt="Imagen Rick And Morty"
+    />
+  </div>
+  <div class="overflow-hidden flex-1">
+    <router-outlet />
+  </div>
+</section>

@@ -1,0 +1,26 @@
+
+<div class="my-4 flex justify-center">
+  <rick-and-morty-search-input
+    [placeholder]="'Busca la locacion por el nombre'"
+    (value)="searchByname($event)"
+  />
+</div>
+
+<div class="overflow-x-auto my-4">
+
+  <app-episode-list [episodes]="episodesRosource.value()?.results ?? []"
+    [errorMessage]="episodesRosource.error()"
+    [isLoading]="episodesRosource.isLoading()"/>
+
+  @if (episodesRosource.hasValue()) {
+    <app-paginator
+      [currentPage]="currentPage()"
+      (value)="changeCurrentPage($event)"
+      [nextPage]="episodesRosource.value().info.next!"
+      [prevPage]="episodesRosource.value().info.prev!"
+      [count]="episodesRosource.value().info.count"
+      [totalPage]="episodesRosource.value().info.pages"
+      [placeHolder] = "'Episodios'"
+    />
+  }
+</div>

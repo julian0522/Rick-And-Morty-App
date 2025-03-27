@@ -1,0 +1,26 @@
+
+<div class="my-4 flex justify-center">
+  <rick-and-morty-search-input
+    [placeholder]="'Busca la locacion por el nombre'"
+    (value)="searchByName($event)"
+  />
+</div>
+
+<div class="overflow-x-auto my-4">
+
+  <app-list-location [locations]="locationResource.value()?.results ?? []"
+    [errorMessage]="locationResource.error()"
+    [isLoading]="locationResource.isLoading()"/>
+
+  @if (locationResource.hasValue()) {
+    <app-paginator
+      [currentPage]="currentPage()"
+      (value)="changeCurrentPage($event)"
+      [nextPage]="locationResource.value().info.next!"
+      [prevPage]="locationResource.value().info.prev!"
+      [count]="locationResource.value().info.count"
+      [totalPage]="locationResource.value().info.pages"
+      [placeHolder]="'Ubicaciones'"
+    />
+  }
+</div>

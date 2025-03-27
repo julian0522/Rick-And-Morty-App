@@ -1,0 +1,25 @@
+<div class="my-4 flex justify-center">
+  <rick-and-morty-search-input
+    [placeholder]="'Busca tu personaje por el nombre'"
+    (value)="searcByName($event)"
+  />
+</div>
+
+<div class="overflow-x-auto my-4">
+
+  <app-list [characters]="characterResource.value()?.results ?? []"
+    [errorMessage]="characterResource.error()"
+    [isLoading]="characterResource.isLoading()"/>
+
+  @if (characterResource.hasValue()) {
+    <app-paginator
+      [currentPage]="currentPage()"
+      (value)="changeCurrentPage($event)"
+      [nextPage]="characterResource.value().info.next!"
+      [prevPage]="characterResource.value().info.prev!"
+      [count]="characterResource.value().info.count"
+      [totalPage]="characterResource.value().info.pages"
+      [placeHolder]="'Personajes'"
+    />
+  }
+</div>

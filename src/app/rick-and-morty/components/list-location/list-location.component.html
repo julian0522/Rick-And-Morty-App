@@ -1,0 +1,51 @@
+<div
+  class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 mx-20 my-10"
+>
+  <table class="table">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>#Id</th>
+        <th>Nombre</th>
+        <th>Tipo</th>
+        <th>Dimension</th>
+        <th>Residentes</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (location of locations(); track location.id) {
+      <tr>
+        <th>{{ location.id }}</th>
+        <td>{{ location.name }}</td>
+        <td>{{ location.type }}</td>
+        <td>{{ location.dimension }}</td>
+        <td>{{ location.residents.length }}</td>
+      </tr>
+      } @if ( locations().length === 0 && !isLoading() ) {
+      <tr>
+        <td colspan="8" class="text-center">No se Encontraron resultados</td>
+      </tr>
+      }
+
+      <!-- ERROR MESSAGE-->
+      @if (errorMessage()) {
+      <tr>
+        <td colspan="8" class="text-center">
+          {{ errorMessage() }}
+        </td>
+      </tr>
+      }
+
+      <!-- LOADING-->
+      @if (isLoading()) {
+      <tr>
+        <td colspan="8">
+          <div class="flex justify-center">
+            <shared-spinner-carga />
+          </div>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
